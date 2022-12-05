@@ -50,7 +50,7 @@ const deleteTodo = (id) => {
 
 const toggleDone = async (id) => {
   const index = todos.value.findIndex(todo => todo.id === id);
-  
+
   await updateDoc(doc(db, "todos", id), {
     done: !todos.value[index].done
   })
@@ -76,8 +76,9 @@ onMounted(async () => {
         content: doc.data().content,
         done: doc.data().done
       })
-    todos.value = temp;
     });
+    todos.value = temp;
+
 
   });
 
